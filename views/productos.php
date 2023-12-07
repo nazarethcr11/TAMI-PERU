@@ -223,7 +223,7 @@
                             width: "70 cm",
                             height: "130 cm",
                             stars: 4,
-                            extra: "<b>Modelo:</b> KN-TH169\n<b>Potencia:</b> 220V, 50 HZ\n<b>Capacidad de llenado:</b> 1-5 g/bolsa\n<b>Anchura de película de plástico:</b> 5 - 7.5 cm<\b>Flujo de trabajo:</b> 30-50 bolsas/min"
+                            extra: "<b>Modelo:</b> KN-TH169\n<b>Potencia:</b> 220V, 50 HZ\n<b>Capacidad de llenado:</b> 1-5 g/bolsa\n<b>Flujo de trabajo:</b> 30-50 bolsas/min"
                         },
                         {
                             id: "sellador__vasos",
@@ -690,9 +690,11 @@
         }
         // Obtener el icono del corazón 
         const heartIcon = modal.querySelector('.heart-icon');
+        if (heartIcon) {
         heartIcon.addEventListener("click", function () {
                       toggleHeartIcon(heartIcon);
         });
+        }
         function toggleHeartIcon(icon) {
             // Alterna las clases de Font Awesome para cambiar el ícono
             icon.classList.toggle("far"); // Alternar el ícono vacío
