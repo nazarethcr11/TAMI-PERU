@@ -1,0 +1,106 @@
+
+.modalForm {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 80px);
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 40; 
+  }
+  .modal-form-content {
+    width: 480px;
+    height: auto;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input, textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  /* Estilo para las columnas */
+  
+  .form-row {
+    display: flex;
+  }
+  
+  .form-column {
+    flex: 1; 
+    margin-right: 20px;
+  } 
+  
+  /* Estilo para el bot¨®n de enviar */
+  
+  #enviarCompra {
+    background-color: var(--color-secundario2);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #enviarCompra:hover {
+    background-color: var(--color-primario1);
+  }
+  
+  /* Hacer textarea redimensionable */ 
+  
+  textarea {
+    resize: vertical;
+  }
+
+  .titleform{
+    color: var(--color-secundario2);
+    text-transform: uppercase;
+    line-height: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+  
+  input[type=number] { -moz-appearance:textfield; }
+
+  @media screen and (max-width: 500px) {
+    .modal-form-content{
+      max-width: 90%;
+      width: 90%;
+      min-width: 90%;
+    }
+    .form-column{
+      margin-right: 0px;
+    }
+    input, textarea {
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+  }

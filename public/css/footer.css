@@ -1,0 +1,161 @@
+.footer {
+  padding: 1rem;
+  background-color: rgb(135, 230, 230);
+}
+
+@keyframes productos {
+  from {
+    transform: scale(0);
+  }
+}
+
+.footer__titulo {
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: bolder;
+}
+.footer__sociales {
+  display: grid;
+  grid-gap: 1rem;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  font-size: var(--fontsize-small);
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+.footer__link {
+  text-decoration: none;
+  color: var(--color-linkFootter);
+  display: flex;
+  align-items: center;
+}
+.footer_copy {
+  text-align: center;
+  font-size: var(--fontsize-small);
+}
+.icono__1 {
+  display: block;
+  margin: .5rem;
+  font-size: var(--fontsize-normal);
+}
+.footer__whas {
+  width: 160px;
+}
+.footer__face {
+  width: 94px;
+}
+.footer__animacion {
+  animation: footer__animacion 3s forwards;
+  animation-play-state: var(--stop5);
+}
+
+@keyframes footer__animacion {
+  from {
+    opacity: 0;
+  }
+}
+
+.icono__flotante {
+  position: fixed;
+  width: 14%;
+  bottom: 2%;
+  right: 4%;
+  font-size: 2.5rem;
+  display: block;
+  text-align: center;
+  z-index: 50;
+}
+.logo__whatsapp {
+  width: 100%;
+  opacity: 1;
+}
+
+.logo__whatsapp:hover {
+  opacity: .8;
+}
+
+@media screen and (min-width: 280px) {
+  .footer {
+    width: 140%;
+    padding: 1rem;
+    background-color: rgb(135, 230, 230);
+}
+}
+@media screen and (min-width:450px) {
+  .logo__whatsapp {
+    width: 80%;
+    opacity: 1;
+  }
+  .footer {
+    width: auto;
+    padding: 1rem;
+    background-color: rgb(135, 230, 230);
+}
+}
+@media screen and (min-width:500px) {
+  .logo__whatsapp {
+    width: 60%;
+    opacity: 1;
+  }
+}
+@media screen and (min-width:630px) {
+    .footer__whas {
+      width: 173px;
+    }
+    .logo__whatsapp {
+      width: 60%;
+      opacity: 1;
+  }
+}
+@media screen and (min-width: 640px) {
+    .icono__1 {
+      font-size: 2rem;
+      display: initial;
+    }
+}
+@media screen and (min-width: 720px) {
+    .logo__whatsapp {
+      width: 50%;
+      opacity: 1;
+    }
+}
+@media screen and (min-width: 768px) {
+    .logo__whatsapp {
+      width: 36%;
+      opacity: 1;
+    }
+}
+@media screen and (min-width: 830px) {
+  .footer {
+    width: auto;
+    padding: 1rem;
+    background-color: rgb(135, 230, 230);
+}
+    .footer__titulo {
+      font-size: var(--fontsize-titulo);
+    }
+    .footer__sociales {
+      font-size: var(--fontsize-normal);
+    }
+    .footer_copy {
+      font-size: var(--fontsize-normal);
+    }
+    .footer__whas {
+      width: 230px;
+    }
+  
+    .footer__face {
+      width: 130px;
+    }
+    .icono__flotante {
+      width: 4%;
+      right: 2%;
+    }
+    .logo__whatsapp {
+      width: 90%;
+      opacity: 1;
+    }
+}

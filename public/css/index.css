@@ -1,0 +1,639 @@
+.panel {
+  background-image: url("../images/PORTADA.webp");
+  margin-top: 70px;
+  height: 47rem;
+  
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+.redes{
+  background-color: rgb(4, 156, 155);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.redes__sociales {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  font-size: var(--fontsize-small);
+  justify-items: center;
+  align-items: center;
+}.redes__sociales a{
+  margin: 20px;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.redes__sociales a i{
+  font-size: 30px;
+}
+.redes_icon{
+  align-items: center;
+  justify-content: center;
+  margin: 22px 0px 60px  60px;
+  font-size: 25px;
+  
+}
+.iconos{
+  color: white;
+  font-size: 50px;
+
+}
+.nombre_producto{
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 0px;
+}
+@keyframes panel {
+  100% {
+    filter: opacity(1);
+  }
+}
+.panel::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.panel__titulo {
+  filter: opacity(0);
+  animation: panel 3s 1 forwards;
+  position: absolute;
+  font-size: 2rem;
+  top: 15%;
+  width: 90%;
+  right: 50%;
+  transform: translate(50%);
+}
+.panel__subtitulo {
+  filter: opacity(0);
+  animation: panel 2s 1 forwards;
+  position: absolute;
+  font-size: 1.4rem;
+  top: 30%;
+  right: 50%;
+  transform: translate(50%);
+  width: 90%;
+}
+.panel__descripcion {
+  font-weight: 600;
+  filter: opacity(0);
+  animation: panel 1.5s 2s 1 forwards;
+  position: absolute;
+  top: 57%;
+  right: 50%;
+  transform: translate(50%);
+  width: 90%;
+  font-size: 1.1rem;
+}
+.panel .small {
+  filter: opacity(0);
+  animation: panel 3s 1s 1 forwards;
+  display: block;
+  margin-top: 1.1rem;
+  font-size: .8rem;
+}
+.panel__boton {
+  filter: opacity(0);
+  animation: panel 2s 1 forwards;
+  text-align: center;
+  background-color: var(--color-botones);
+  color: white;
+  width: 8rem;
+  padding: 4rem;
+  position: absolute;
+  bottom: 4rem;
+  right: 50%;
+  transform: translate(50%);
+  font-size: 8rem;
+  width: 40%;
+  border-radius: 20px;
+  transition: background-color 1s;
+}
+.panel__boton:hover {
+  background-color: var(--hoverbotonpanel);
+  color: white;
+}
+.panel__link {
+  text-decoration: none;
+  color: black;
+  display: block;
+  font-weight: bold;
+}
+.productos {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  transform: scale(1);
+  animation: productos 2s;
+  animation-play-state: var(--stop);
+}
+@keyframes productos {
+  from {
+    transform: scale(0);
+  }
+}
+.productos__img {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.vid__item {
+  width: 80%;
+  height: 90%;
+}
+.video {
+  color: white;
+  background-color: var(--color-botones);
+  padding-bottom: 2rem;
+  display: flex;
+  animation: video 3s forwards;
+  animation-play-state: var(--stop6);
+}
+@keyframes video {
+  from {
+    opacity: 0;
+  }
+}
+.video__texto {
+  display: none;
+}
+.video__item {
+  width: 100%;
+}
+
+
+
+@media screen and (min-width: 300px) {
+  .main__inicio {
+    width: 140%;
+}
+  .productos__img {
+    width: 30%;
+  }
+
+  .productos {
+    display: flex;
+    margin: 20px;
+    transform: scale(1);
+    animation: productos 2s;
+    animation-play-state: var(--stop);
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.redes__sociales {
+  gap: 0px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.redes__sociales a {
+  font-size: 14px;
+}
+.redes__sociales a i {
+  font-size: 18px;
+}
+.panel {
+  background-image: url(../images/PORTADA.webp);
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 13rem;
+  background-attachment: fixed;
+  background-size: 100%;
+  margin-top: 4.4rem;
+}
+.panel__boton {
+  filter: opacity(0);
+  animation: panel 2s 1 forwards;
+  text-align: center;
+  background-color: var(--color-botones);
+  color: white;
+  width: 8rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 4rem;
+  right: 50%;
+  transform: translate(50%);
+  font-size: 0.8rem;
+  width: 30%;
+  border-radius: 20px;
+  transition: background-color 1s;
+}
+}
+
+@media screen and (min-width: 440px) {
+  .main__inicio {
+    width: 100%;
+}
+  .productos__img {
+    width: 30%;
+  }
+
+  .productos {
+    display: flex;
+    margin: 20px;
+    transform: scale(1);
+    animation: productos 2s;
+    animation-play-state: var(--stop);
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.redes__sociales {
+  gap: 0px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.redes__sociales a {
+  font-size: 14px;
+}
+.redes__sociales a i {
+  font-size: 18px;
+}
+.panel {
+  background-image: url(../images/PORTADA.webp);
+  position: relative;
+  background-repeat: no-repeat;
+  background-position-y: 4rem;
+  height: 17rem;
+  background-attachment: fixed;
+  background-size: 100%;
+  margin-top: 4.4rem;
+}
+.panel__boton {
+  filter: opacity(0);
+  animation: panel 2s 1 forwards;
+  text-align: center;
+  background-color: var(--color-botones);
+  color: white;
+  width: 8rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 4rem;
+  right: 50%;
+  transform: translate(50%);
+  font-size: 0.8rem;
+  width: 30%;
+  border-radius: 20px;
+  transition: background-color 1s;
+}
+}
+
+@media screen and (min-width: 500px) {
+  .productos {
+    display: flex;
+    margin: 20px;
+    transform: scale(1);
+    animation: productos 2s;
+    animation-play-state: var(--stop);
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.redes__sociales {
+  gap: 0px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.redes__sociales a {
+  font-size: 16px;
+}
+.redes__sociales a i {
+  font-size: 18px;
+}
+.panel {
+  background-image: url(../images/PORTADA.webp);
+  position: relative;
+  background-repeat: no-repeat;
+  background-position-y: 4rem;
+  height: 20rem;
+  background-attachment: fixed;
+  background-size: 100%;
+  margin-top: 4.4rem;
+}
+.panel__boton {
+  filter: opacity(0);
+  animation: panel 2s 1 forwards;
+  text-align: center;
+  background-color: var(--color-botones);
+  color: white;
+  width: 8rem;
+  padding: 1rem;
+  position: absolute;
+  bottom: 4rem;
+  right: 50%;
+  transform: translate(50%);
+  font-size: 0.8rem;
+  width: 30%;
+  border-radius: 20px;
+  transition: background-color 1s;
+}
+}
+
+@media screen and (min-width: 700px) {
+  .productos__img {
+    width: 30%;
+  }
+
+  .panel__boton {
+    padding: 1rem;
+    font-size: 1rem;
+    width: 25%;
+  }
+  .panel {
+    background-image: url(../images/PORTADA.webp);
+    position: relative;
+    background-repeat: no-repeat;
+    background-position-y: 4rem;
+    height: 26rem;
+    background-attachment: fixed;
+    background-size: 100%;
+    margin-top: 5.4rem;
+  }
+  .redes__sociales {
+    gap: 0px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .redes__sociales a {
+    font-size: 16px;
+  }
+  .redes__sociales a i {
+    font-size: 18px;
+  }
+  .vid__item {
+    object-fit: cover;
+    width: 82%;
+    height: 11rem;
+  }
+  .productos {
+    display: flex;
+    justify-content: center;
+    margin: 55px 20px 55px 20px;
+    transform: scale(1);
+    animation: productos 2s;
+    animation-play-state: var(--stop);
+    flex-direction: row;
+  }
+  .nombre_producto {
+    font-size: 20px;
+}
+}
+
+@media screen and (min-width: 720px) {
+  .vid__item {
+    width: 71%;
+}
+.nombre_producto {
+  font-size: 20px;
+}
+
+.video__item {
+  width: 60%;
+}
+.video {
+  display: flex;
+  justify-content: center;
+  padding: 27px;
+}
+.redes__sociales {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  font-size: var(--fontsize-small);
+  justify-items: center;
+  align-items: center;
+}
+.redes__sociales a i {
+  font-size: 12px;
+}
+.redes__sociales a {
+  font-size: 11px;
+}
+
+}
+
+
+@media screen and (min-width: 768px) {
+  .panel__boton {    
+    width: 8rem;
+    padding: 1.2rem;
+    bottom: 4rem;    
+    font-size: 1rem;
+    width: 35%;
+  }
+  .panel {
+    height: 440px;
+    background-attachment: fixed;
+    background-size: 100%;
+    margin-top: 4.3rem;    
+  }
+
+  .redes__sociales a {
+    font-size: 10px;
+  }
+  .redes__sociales a i {
+    font-size: 11px;
+  }
+  .nombre_producto {
+    font-size: 25px;
+  }
+
+}
+
+
+@media screen and (min-width: 830px) {
+  .menu__item:first-child {
+    background-color: var(--color-primario1);
+    position: relative;
+  }
+  .menu__item:first-child::before {
+    content: "";
+    display: block;
+    background-color: black;
+    height: 2rem;
+    width: 30%;
+    position: absolute;
+    bottom: -.9rem;
+    transform: translate(50%) rotate(52deg);
+    z-index: -1;
+    background-color: var(--color-primario1);
+    border: 2px solid gray;
+  }
+  .panel {
+    height: 28.6rem;
+    background-attachment: fixed;
+    background-size: 100%;
+    margin-top: 5.4rem;
+  }
+  .panel__titulo {
+    font-size: 4rem;
+  }
+  .panel__subtitulo {
+    font-size: 2.3rem;
+  }
+  .panel__descripcion {
+    font-size: 1.6rem;
+  }
+  .panel .small {
+    font-size: 1.2rem;
+  }
+  .panel__boton {
+    font-size: var(--fontsize-normal);
+    width: 18%;
+    padding: 1.3rem;
+    font-size: 14px;
+  } 
+  .productos__img {
+    flex: 1;
+  }
+  .video__texto {
+    flex: 1;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 80px;
+    text-align: center;
+  }
+  .video__item {
+    flex: 1;
+    width: 54%;
+    height: 250px;
+    padding-right: 167px;
+    margin-top: 1rem;
+  }
+  .redes__sociales a {
+    font-size: 12px;
+  }
+  .redes__sociales a i {
+    font-size: 14px;
+  }
+
+  .productos {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    transform: scale(1);
+    animation: productos 2s;
+    animation-play-state: var(--stop);
+    flex-direction: row;
+}
+}
+
+@media screen and (min-width: 952px) {
+  .redes__sociales a{
+     font-size: 15px;  
+  }
+  .redes__sociales a i{
+    font-size: 18px;
+  }
+  .vid__item {
+    width: 70%;
+    height: 90%;
+  }
+  .nombre_producto {
+    font-size: 26px;
+  }
+  .panel {
+    height: 33.7rem;
+    background-attachment: fixed;
+    background-size: 100%;
+    margin-top: 5.4rem;
+  }
+
+  .productos {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    transform: scale(1);
+    animation: productos 2s;
+    animation-play-state: var(--stop);
+    flex-direction: row;
+}
+}
+@media screen and (min-width: 1314px) {
+  .panel {
+    height: 47rem;
+    background-attachment: fixed;
+    background-size: 100%;
+    margin-top: 2.4rem;
+}
+.productos {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  transform: scale(1);
+  animation: productos 2s;
+  animation-play-state: var(--stop);
+  flex-direction: row;
+}
+}
+
+@media screen and (min-width: 1638px) {
+  .panel {
+    height: 61rem;
+    background-attachment: fixed;
+    background-size: 100%;
+    margin-top: 2.4rem;
+  }
+  .video__texto {
+    flex: 1;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 80px;
+    text-align: center;
+  }
+  .panel__boton {
+    font-size: 18px;
+  }
+  .redes__sociales {
+    gap: 43px;
+  }
+  .redes__sociales a {
+    font-size: 20px;
+  }
+  .redes__sociales a i {
+    font-size: 24px;
+  }
+  .video__item {
+    height: 290px;
+    margin-top: 2rem;
+  }
+  .productos__img {
+    flex: 1;
+    gap: 7px;
+  }
+  .nombre_producto {
+    font-size: 30px;
+  }
+  .productos {
+    margin: 20px 20px 35px 20px;
+  }
+  .productos {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    transform: scale(1);
+    animation: productos 2s;
+    animation-play-state: var(--stop);
+    flex-direction: row;
+}
+}
