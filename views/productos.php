@@ -223,6 +223,7 @@
                             width: "70 cm",
                             height: "130 cm",
                             stars: 4,
+                            extra: "<b>Modelo:</b> KN-TH169\n<b>Potencia:</b> 220V, 50 HZ\n<b>Capacidad de llenado:</b> 1-5 g/bolsa\n<b>Anchura de película de plástico:</b> 5 - 7.5 cm<\b>Flujo de trabajo:</b> 30-50 bolsas/min"
                         },
                         {
                             id: "sellador__vasos",
@@ -239,6 +240,8 @@
                             width: "32 cm",
                             height: "50 cm",
                             stars: 3,
+                            extra: "<b>Modelo:</b> ET-A9\n<b>Potencia:</b> 220V / 110V\n<b>Temperatura de sellado:</b> 160 – 200°C\n<b>Diámetro de sellado:</b> 9.5 y 7.5 cm\n<b>Flujo de trabajo:</b> 300 - 400 vasos/h"
+
                         },
                         {
                             id: "Panel__Fibra",
@@ -255,6 +258,7 @@
                             width: "360 cm",
                             height: "0.8 cm",
                             stars: 5,
+                            extra: "<b>Materiales:</b> APA sólido Material de Base\n<b>Longitud:</b> 2,4 m 2,8 m,/por o personalizado\n<b>Aplicación:</b> Hotel, hogar, apartamento, etc.\n<b>Resistente al:</b> Agua, fuego, polvo\n<b>Tipo de decoración:</b> Interiores"
                         },
                         {
                             id: "S__Botellas",
@@ -271,6 +275,7 @@
                             width: "23 cm",
                             height: "11.5 cm",
                             stars: 4,
+                            extra: "<b>Modelo:</b> DCGY-F200\n<b>Potencia:</b> AC220V/50HZ-80HZ\n<b>Temperatura ambiente:</b> 10 - 400 °C\n<b>Diámetro del sello:</b> 2 - 8 (cm)\n<b>Flujo de trabajo:</b> 25 Botellas/min"
                         },
                         {
                             id: "Selladora-de-bolsas",
@@ -287,6 +292,7 @@
                             width: "56 cm",
                             height: "150 cm",
                             stars: 4,
+                            extra: "<b>Potencia:</b> 220-240V/50Hz\n<b>Capacidad de llenado:</b> 1-100g (Según el modelo)\n<bAnchura de película de plástico:</b> 3-20cm (Según el modelo)\n<b>Flujo de trabajo:</b> 10-20 bolsas/min"  
                         },
                         {
                             id: "Soldadora-LINGBA-5",
@@ -303,6 +309,7 @@
                             width: "14.5 cm",
                             height: "17.5 cm",
                             stars: 4,
+                            extra: "<b>Modelo:</b> MIG-225\n<b>Potencia de soldadura/rango de tensión:</b> 5-160A/220V\n<b>Ciclo de trabajo nominal:</b> 60%\n<b>Peso:</b> 5,7 KG\n<b>Tipos de Soldadura:</b> MIG MAG/MMA/ TIG 3 en 1\n<b>Eficiencia:</b> 85%"
                         },
                         {
                             id: "Soldadora-SPARK-3",
@@ -319,6 +326,7 @@
                             width: "16.5 cm",
                             height: "22 cm",
                             stars: 5,
+                            extra: "<b>Modelo:</b> Mig-250 MIG\n<b>Potencia:</b> 230V, 50/60 HZ\n<b>Ciclo de trabajo nominal:</b> 60%\n<b>Peso:</b> 6.5 KG\n<b>Tipos de Soldadura:</b> MIG MAG/MMA/LIFT TIG 3 en 1"
                         },
                         {
                             id: "MEZCLADORA-DE-CONCRETO",
@@ -335,6 +343,7 @@
                             width: "85 cm",
                             height: "142 cm",
                             stars: 4,
+                            extra: "<b>Modelo:</b> HCM700\n<b>Energía del motor:</b> 550W-850W\n<b>Capacidad:</b> 200 L\n<b>Peso Neto:</b> 72 KG\n<b>Diámetro del tambor:</b> 63 cm\n<b>Boca de tambor:</b> 39 cm"
                         },
                         {
                             id: "Ventilador-Holografico",
@@ -351,6 +360,7 @@
                             width: "22 cm",
                             height: "8 cm",
                             stars: 5,
+                            extra: "<b>Modelo:</b> Z7H\n<b>Formato de soporte:</b> MP4/AVI/RMVB/MKV/GIF/JPG/PNG\n<b>Resolución física: </b>1600x616 px\n<b>Potencia nominal:</b> 15W ~ 24Wn\n<b>Velocidad de rotación:</b> 670 RPM"
                         },
                         {
                             id: "WPC__FENCEPANEL",
@@ -367,6 +377,7 @@
                             width: "13.9 cm",
                             height: "9 cm",
                             stars: 4,
+                            extra: "<b>Tipo:</b> Panel de cerca\n<b>Característica:</b> Anti-UV, impermeable, anti-decoloración, etc.\n<b>Aplicación:</b> Hotel, hogar, apartamento, etc.\n<b>Resistente al:</b> Agua, fuego, polvo\n<b>Tipo de decoración:</b> Exteriores"
                         },
                         {
                             id: "WPC__WALLPANEL",
@@ -384,6 +395,7 @@
                             height: "2.5 cm",
                             stars: 5,
                             cantidad: 1,
+                            extra: "<b>Paquete:</b>  10 pcs/ctn\n<b>Longitud:</b> 2,9 metros o personalizado \n<b>Aplicación:</b>Hotel, hogar, apartamento, etc.\n<bResistente al:</b> Agua, fuego, polvo\n<b>Tipo de decoración:</b> Interiores"
                         },
                     ];
                 
@@ -429,9 +441,12 @@
                                         </div>
                                         <div class="detalles">
                                             <div class="detalles-subcont">
-                                                <label>Caracteristicas: </label>
+                                                <label>Información: </label>
                                                 <br>
                                                 <span>${producto.industries}</span>
+                                            </div>
+                                            <div class= "detalles-subcont"> 
+                                                <pre style="font-size: 0.8rem">${producto.extra}</pre>
                                             </div>
                                             <div class="detalles-subcont">
                                                 <label>Dimensiones:</label>
@@ -685,30 +700,47 @@
         }
     }            
 
-    function changeImage(thumbnail) {
-    // Obtener la URL de la miniatura clicada
-    var newImageSrc = thumbnail.src;
+    function changeMedia(thumbnail) {
+    // Obtener el contenedor de imágenes y videos
+    var mediaContainer = thumbnail.closest(".modal-content").querySelector('.image-container');
 
-    // Obtener la imagen principal
-    var mainImage = thumbnail.closest(".modal-content").querySelector('.principal-img');
+    // Remover todos los elementos en el contenedor
+    while (mediaContainer.firstChild) {
+        mediaContainer.removeChild(mediaContainer.firstChild);
+    }
 
-    // Cambiar la imagen principal por la miniatura seleccionada
-    mainImage.src = newImageSrc;
+    // Crear un nuevo elemento según el tipo de la miniatura clicada
+    var newMedia;
+    if (thumbnail.tagName === 'IMG') {
+        newMedia = document.createElement('img');
+        newMedia.src = thumbnail.src;
+        newMedia.classList.add('principal-img');
+    } else if (thumbnail.tagName === 'VIDEO') {
+        newMedia = document.createElement('video');
+        newMedia.src = thumbnail.src;
+        newMedia.controls = true;
+        newMedia.classList.add('principal-img');
+    }
+
+    // Agregar el nuevo elemento al contenedor
+    mediaContainer.appendChild(newMedia);
 
     // Remover la clase 'selected' de todos los Thumbnails
-    var thumbnails = thumbnail.closest(".modal-content").querySelectorAll('.product-thumbnails img');
+    var thumbnails = thumbnail.closest(".modal-content").querySelectorAll('.product-thumbnails img, .product-thumbnails video');
     thumbnails.forEach(function (thumb) {
         thumb.classList.remove('selected');
     });
 
     // Agregar la clase 'selected' al Thumbnail seleccionado
     thumbnail.classList.add('selected');
-    }
+}
+
+
 
 // Al inicio, muestra el primer Thumbnail en la imagen principal
 window.addEventListener('DOMContentLoaded', function() {
     var firstThumbnail = document.querySelector('.product-thumbnails img');
-    changeImage(firstThumbnail);
+    changeMedia(firstThumbnail);
 });
 
 

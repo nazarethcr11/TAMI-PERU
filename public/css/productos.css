@@ -125,7 +125,7 @@ h2 {
   flex-grow: 1;
   padding: 0 20px; 
 }
-/* Estilo del botón de cierre en el modal */
+/* Estilo del bot锟斤拷n de cierre en el modal */
 .close {
   position: absolute;
   top: 5px;
@@ -177,10 +177,10 @@ h2 {
   color:var(--color-secundario2);
 }
 .star {
-  font-size: 20px; /* Ajusta el tamaño de las estrellas según tus preferencias */
+  font-size: 20px; /* Ajusta el tama锟�0锟�9o de las estrellas seg锟斤拷n tus preferencias */
 }
 .opinion-subcont{
-  margin-top: 10px;
+  margin-top: 5px;
   display: flex;
   align-items: center;
 }
@@ -193,7 +193,7 @@ h2 {
 }
 .detalles-subcont{
   display: block;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
 }
 .detalles-subcont label{
   font-size: 1rem;
@@ -201,6 +201,8 @@ h2 {
 }
 .detalles-subcont span{
   font-size: 0.8rem;
+  line-height: 1rem;
+  display: flex;
 }
 .custom-table {
   margin-top: 0.5rem;
@@ -220,11 +222,11 @@ h2 {
   color: var(--color-secundario2);
 }
 .custom-table td {
-  padding: 5px;
+  padding: 2px;
   text-align: center;
 }
 .btn-contactar{
-  margin: 0.5rem auto;
+  margin: 0.2rem auto;
   padding: 0.3rem 1rem;
   background-color: var(--color-secundario2);
   color: white;
@@ -236,7 +238,7 @@ h2 {
   transition: 0.3s ease;
 }
 .btn-faq{
-  margin: 0.5rem auto;
+  margin: 0.2rem auto;
   padding: 0.3rem 1rem;
   background-color: transparent;
   color: var(--color-secundario2);
@@ -251,7 +253,7 @@ h2 {
   border-top:1.5px solid var(--color-secundario2);
 }
 .counter {
-  margin: 1.5rem 2.5rem 0.7rem 2.5rem;
+  margin: 1rem 2.5rem 0.7rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,7 +341,7 @@ h2 {
   top: 10px;
   right: 10px;
   font-size: 16px;
-  color: var(--color-secundario2); /* Cambia el color del corazón según tus preferencias */
+  color: var(--color-secundario2); /* Cambia el color del coraz锟斤拷n seg锟斤拷n tus preferencias */
   cursor: pointer;
   /*poner un circulo alrededor*/
   border-radius: 50%;
@@ -355,7 +357,7 @@ h2 {
 .modal.fade-out {
   animation: fadeOut 0.3s ease;
 }
-/* Definición de las animaciones */
+/* Definici锟斤拷n de las animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -492,7 +494,7 @@ h2 {
     padding: 0;
   }
   .detalles-subcont{
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
   }
   .pro-opinion{
     display: none;
