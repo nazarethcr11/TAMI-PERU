@@ -99,6 +99,16 @@
             transform: scaleX(1);
         }
     }
+    .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Ajusta la duración y la función de temporización según sea necesario */
+}
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    height: 100px;
+    max-height: 200px;
+}
 </style>
 
 <body>
@@ -578,12 +588,8 @@
                             notification.style.display = 'none';
                         }, 5000);
                     }
-
                     // Asociar la función al evento click del botón
                     document.getElementById(`submitButton_${producto.id}`).addEventListener('click', () => mostrarNotificacion(producto.id));
-
-
-
                 }
 
 
@@ -617,18 +623,55 @@
                                     </div>
                                     <label>Consulta:</label>
                                     <textarea name="mensaje" rows="4" id="mensaje" required></textarea>
-                                    <input type="button" value="Enviar Compra" id="enviarCompra" onclick="enviarButton()">
+                                    <input type="button" class="btn-cotizar" value="Enviar Compra" id="enviarCompra_${producto.id}" onclick="enviarButton()">
                                 </form>
                             </div>
                         `;
                     document.getElementById("modalForm").appendChild(modalForm);
+
+                    function mostrarNotificacion(productoId) {
+                        const notification = document.getElementById(`notification_${productoId}`);
+                        const notificationText = document.getElementById(`notification-text_${productoId}`);
+
+                        // Restablecer las clases de animación para volver a reproducir la animación
+                        notification.classList.remove('animate__fadeIn');
+                        notification.classList.remove('animate__animated');
+                        void notification.offsetWidth; // Forzar un reflow para reiniciar las animaciones
+
+                        // Agregar las clases de animación
+                        notification.classList.add('animate__fadeIn');
+                        notification.classList.add('animate__animated');
+
+                        // Configurar el contenido de la notificación
+                        notification.style.display = 'block';
+                        notificationText.textContent = 'Enviado Correctamente ✔️ ';
+
+                        // Ocultar la notificación después de 5 segundos
+                        setTimeout(() => {
+                            notification.style.display = 'none';
+                        }, 5000);
+                    }
+
+                    // Asociar la función al evento click del nuevo botón
+                    document.getElementById(`enviarCompra_${producto.id}`).addEventListener('click', () => mostrarNotificacion(producto.id));
+
+
                 }
 
-                // Llamada a la función para generar los modales
                 productos.forEach((producto) => {
                     generarModal(producto);
                     generarModalForm(producto);
+
+                    const enviarCompraButton = document.getElementById(`enviarCompra_${producto.id}`);
+                    if (enviarCompraButton) {
+                        enviarCompraButton.addEventListener('click', function() {
+                            enviarButton(producto.id);
+                            // Cerrar el modal principal
+                            closeModalForm(producto.id);
+                        });
+                    }
                 });
+
 
                 function getStarsHTML(stars) {
                     const starHTML = '<span class="star">★</span>'; // Una sola estrella
@@ -746,14 +789,22 @@
             enviarButton();
 
         }
-
         function closeModalForm(id) {
-            var modalForm = document.getElementById(id + "_modalForm");
-            if (modalForm) { // Verificar si el elemento existe antes de operar sobre él
-                modalForm.style.display = "none";
-                modalForm.classList.remove("show");
-            }
-        }
+    var modalForm = document.getElementById(id + "_modalForm");
+    if (modalForm) {
+        // Agregar clase para la animación de desvanecimiento
+        modalForm.classList.add("fade-out");
+
+        // Retrasar la operación hasta que se complete la animación
+        setTimeout(function() {
+            // Quitar la clase y ocultar el modal después de la animación
+            modalForm.classList.remove("fade-out");
+            modalForm.style.display = "none";
+            modalForm.classList.remove("show");
+        }, 350); // Ajusta este valor para que coincida con la duración de la animación en milisegundos
+    }
+}
+
 
         function setUpCounter() {
             const modal = document.querySelector('.modal.show');
@@ -840,49 +891,41 @@
             thumbnail.classList.add('selected');
         }
 
-
-
-        // Al inicio, muestra el primer Thumbnail en la imagen principal
-        window.addEventListener('DOMContentLoaded', function() {
-            var firstThumbnail = document.querySelector('.product-thumbnails img');
-            changeMedia(firstThumbnail);
-        });
-
-
-        function enviarButton() {
-            const modalForm = document.querySelector('.modalForm.show');
+        function enviarButton(productoId) {
+            const modalForm = document.getElementById(`${productoId}_modalForm`);
             if (!modalForm) {
                 console.log('No se encontró el modal');
+                return;
             }
-            const enviarCompra = modalForm.querySelector("#enviarCompra");
 
-            enviarCompra.addEventListener("click", function() {
-                // Obtener valores del formulario
-                const numero = "+51995669450";
-                const nombre = modalForm.querySelector("#nombre").value;
-                const email = modalForm.querySelector("#email").value;
-                const mensaje = modalForm.querySelector("#mensaje").value;
-                const producto = modalForm.querySelector("#producto").value;
-                const cantidad = modalForm.querySelector("#cantidad").value;
-                const telefono = modalForm.querySelector("#telefono").value;
-                //enviar datos al php
-                $.ajax({
-                    url: "mensajewssp.php",
-                    type: "POST",
-                    data: {
-                        nombre: nombre,
-                        email: email,
-                        telefono: telefono,
-                        producto: producto,
-                        cantidad: cantidad,
-                        mensaje: mensaje
-                    },
-                    success: function(response) {
-                        console.log(response);
-                    },
-                });
+            // Obtener valores del formulario
+            const nombre = modalForm.querySelector("#nombre").value;
+            const email = modalForm.querySelector("#email").value;
+            const mensaje = modalForm.querySelector("#mensaje").value;
+            const producto = modalForm.querySelector("#producto").value;
+            const cantidad = modalForm.querySelector("#cantidad").value;
+            const telefono = modalForm.querySelector("#telefono").value;
 
+            // Envía datos al servidor (PHP) usando AJAX
+            $.ajax({
+                url: "mensajewssp.php",
+                type: "POST",
+                data: {
+                    nombre: nombre,
+                    email: email,
+                    telefono: telefono,
+                    producto: producto,
+                    cantidad: cantidad,
+                    mensaje: mensaje
+                },
+                success: function(response) {
+                    console.log(response);
+                    // Muestra una alerta después de enviar el correo
+                    //alert("Correo enviado exitosamente");
 
+                    // Ocultar el modal del formulario con desvanecimiento
+                   
+                },
             });
         }
     </script>
