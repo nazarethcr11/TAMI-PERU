@@ -531,9 +531,8 @@ textarea {
                                             <div class="detalles-subcont">
                                                 <label>Mayor Información: </label>
                                                 <br>
-                                                    <a href="https://smartlink.metricool.com/public/smartlink/tamiperu01" class="btn-contactar">Contactar</a>
+                                                    <a href="https://smartlink.metricool.com/public/smartlink/tamiperu01" target="_blank" class="btn-contactar">Contactar</a>
                                                     <button class="btn-faq" onclick="openFAQModal()">FAQ</button>                                            
-                                                    <button id="submitButton_${producto.id}" class="button">FINALIZAR</button>
                                             </div>
                                         </div>
                                         <div class="calc-container">
@@ -589,7 +588,6 @@ textarea {
                         }, 5000);
                     }
                     // Asociar la función al evento click del botón
-                    document.getElementById(`submitButton_${producto.id}`).addEventListener('click', () => mostrarNotificacion(producto.id));
                 }
 
 
@@ -608,7 +606,7 @@ textarea {
                                         <input type="text" name="nombre" id="nombre" required>
 
                                         <label>Correo Electrónico:</label>
-                                        <input type="email" name="email" id="email" required>
+                                        <input type="email" name="email" id="email" required >
 
                                         <label>Número telefónico:</label>
                                         <input type="number" name="telefono" id="telefono" required>
@@ -618,12 +616,12 @@ textarea {
                                         <input type="text" name="producto" id="producto" disabled value="${producto.title}">
 
                                         <label>Cantidad:</label>
-                                        <input type="number" name="cantidad" id="cantidad" required>
+                                        <input type="number" name="cantidad" id="cantidad">
                                       </div>
                                     </div>
                                     <label>Consulta:</label>
-                                    <textarea name="mensaje" rows="4" id="mensaje" required></textarea>
-                                    <input type="button" class="btn-cotizar" value="Enviar Compra" id="enviarCompra_${producto.id}" onclick="enviarButton()">
+                                    <textarea name="mensaje" rows="4" id="mensaje"></textarea>
+                                    <input type="button" class="btn-enviar" value="Enviar Compra" id="enviarCompra_${producto.id}" onclick="enviarButton()" disabled>
                                 </form>
                             </div>
                         `;
@@ -760,6 +758,7 @@ textarea {
     <script type="application/javascript" src="../public/js/main.js" async></script>
     <script type="application/javascript" src="../public/js/productos.js" async></script>
     <script>
+
         function openModal(id) {
             var modal = document.getElementById(id + "_modal"); // ID del modal
             modal.style.display = "block";
@@ -790,19 +789,19 @@ textarea {
 
         }
         function closeModalForm(id) {
-    var modalForm = document.getElementById(id + "_modalForm");
-    if (modalForm) {
-        // Agregar clase para la animación de desvanecimiento
-        modalForm.classList.add("fade-out");
+        var modalForm = document.getElementById(id + "_modalForm");
+        if (modalForm) {
+            // Agregar clase para la animación de desvanecimiento
+            modalForm.classList.add("fade-out");
 
-        // Retrasar la operación hasta que se complete la animación
-        setTimeout(function() {
-            // Quitar la clase y ocultar el modal después de la animación
-            modalForm.classList.remove("fade-out");
-            modalForm.style.display = "none";
-            modalForm.classList.remove("show");
-        }, 350); // Ajusta este valor para que coincida con la duración de la animación en milisegundos
-    }
+            // Retrasar la operación hasta que se complete la animación
+            setTimeout(function() {
+                // Quitar la clase y ocultar el modal después de la animación
+                modalForm.classList.remove("fade-out");
+                modalForm.style.display = "none";
+                modalForm.classList.remove("show");
+            }, 350); // Ajusta este valor para que coincida con la duración de la animación en milisegundos
+        }
 }
 
 
@@ -920,13 +919,41 @@ textarea {
                 },
                 success: function(response) {
                     console.log(response);
-                    // Muestra una alerta después de enviar el correo
-                    //alert("Correo enviado exitosamente");
-
-                    // Ocultar el modal del formulario con desvanecimiento
-                   
+                  
                 },
             });
         }
+        function checkRequiredFields(productoId) {
+            const modalForm = document.getElementById(`${productoId}_modalForm`);
+
+            const nombre = modalForm.querySelector("#nombre").value;
+            const email = modalForm.querySelector("#email").value;
+            const telefono = modalForm.querySelector("#telefono").value;
+
+            const enviarButton = modalForm.querySelector(`#enviarCompra_${productoId}`);
+
+            if (nombre && email && telefono) {
+                enviarButton.disabled = false;
+            } else {
+                enviarButton.disabled = true;
+            }
+        }
+
+        // Attach the function to the "change" event of the relevant fields
+        function attachChangeListeners(productoId) {
+            const modalForm = document.getElementById(`${productoId}_modalForm`);
+
+            // Llamar cuando cambia un campo
+            modalForm.querySelectorAll("#nombre, #email, #telefono").forEach(field => {
+                field.addEventListener('input', () => checkRequiredFields(productoId));
+            });
+
+            // Llamar inicialmente
+            checkRequiredFields(productoId);
+        }
+        // Call this function for each product to set up the listeners
+        productos.forEach((producto) => {
+            attachChangeListeners(producto.id);
+        });
     </script>
 </body>

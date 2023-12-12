@@ -13,7 +13,7 @@ $mensajealusuario = "Hola ".$nombre.", aqui tienes la información que solicitas
 //switch para determinar el link segun el producto
 $linkimagen = "";
 switch ($producto) {
-    case 'SBotellas 1_1':
+    case 'Sellador de Botellas':
         $linkimagen="https://i.ibb.co/4szkT7x/f9b36728-917b-4c60-a50f-ee2e0a73c92f.jpg";
         break;
     case 'Máquina de embalaje':
@@ -42,6 +42,9 @@ switch ($producto) {
         break;
     case 'WPC WALLPANEL':
         $linkimagen="https://i.ibb.co/hWZmvpk/Flyer-WPC-Wall-Panel.webp";
+        break;
+    case 'Maquina de Concreto':
+        $linkimagen="https://i.ibb.co/68YwTzY/Flyer-Mezcladora-de-Concreto.webp";
         break;
     default:
         $linkimagen="https://file-example.s3-accelerate.amazonaws.com/images/test.jpg";
