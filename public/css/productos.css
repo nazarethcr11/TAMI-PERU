@@ -288,23 +288,6 @@ h2 {
   cursor: pointer;
   transition: 0.3s ease;
 }
-.btn-enviar[disabled]{
-  background-color: gray;
-  color: white;
-  cursor: not-allowed;
-}
-.btn-enviar{
-  width: 100%;
-  padding: 10px;
-  background-color: var(--color-secundario2);
-  color: white;
-  border: none;
-  border-radius: 3px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
 /* Estilo para la imagen del producto */
 .modal-content .product-images{
   width: 47%;
