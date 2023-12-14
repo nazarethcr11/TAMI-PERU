@@ -593,84 +593,132 @@ textarea {
                 }
 
 
-                function generarModalForm(producto) {
-                    const modalForm = document.createElement("div");
-                    modalForm.id = `${producto.id}_modalForm`;
-                    modalForm.classList.add("modalForm");
-                    modalForm.innerHTML = `
-                            <div class="modal-form-content">
-                                <span class="close" onclick="closeModalForm('${producto.id}')">x</span>
-                                <label class="titleform">Cotizar ${producto.title}</label>
-                                <form id="miFormulario" action="mensajewssp.php" method="POST">
-                                <div class="form-row">
-                                      <div class="form-column">
-                                        <label>Nombre:</label>
-                                        <input type="text" name="nombre" id="nombre" required>
 
-                                        <label>Correo Electrónico:</label>
-                                        <input type="email" name="email" id="email" required>
+// Función para generar el formulario modal del producto
+function generarModalForm(producto) {
+    const modalForm = document.createElement("div");
+    modalForm.id = `${producto.id}_modalForm`;
+    modalForm.classList.add("modalForm");
+    modalForm.innerHTML = `
+        <div class="modal-form-content">
+            <span class="close" onclick="closeModalForm('${producto.id}')">x</span>
+            <label class="titleform">Cotizar ${producto.title}</label>
+            <form id="miFormulario" action="mensajewssp.php" method="POST">
+                <div class="form-row">
+                    <div class="form-column">
+                        <label>Nombre:</label>
+                        <input type="text" name="nombre" id="nombre" required>
 
-                                        <label>Número telefónico:</label>
-                                        <input type="number" name="telefono" id="telefono" required>
-                                        </div>
-                                        <div class="form-column">
-                                        <label>Producto a Comprar:</label>
-                                        <input type="text" name="producto" id="producto" disabled value="${producto.title}">
+                        <label>Correo Electrónico:</label>
+                        <input type="email" name="email" id="email" required>
 
-                                        <label>Cantidad:</label>
-                                        <input type="number" name="cantidad" id="cantidad" required>
-                                      </div>
-                                    </div>
-                                    <label>Consulta:</label>
-                                    <textarea name="mensaje" rows="4" id="mensaje" required></textarea>
-                                    <input type="button" class="btn-cotizar" value="Enviar Compra" id="enviarCompra_${producto.id}" onclick="enviarButton()">
-                                </form>
-                            </div>
-                        `;
-                    document.getElementById("modalForm").appendChild(modalForm);
+                        <label>Número telefónico:</label>
+                        <input type="number" name="telefono" id="telefono" required>
+                    </div>
+                    <div class="form-column">
+                        <label>Producto a Comprar:</label>
+                        <input type="text" name="producto" id="producto" disabled value="${producto.title}">
 
-                    function mostrarNotificacion(productoId) {
-                        const notification = document.getElementById(`notification_${productoId}`);
-                        const notificationText = document.getElementById(`notification-text_${productoId}`);
+                        <label>Cantidad:</label>
+                        <input type="number" name="cantidad" id="cantidad" required>
+                    </div>
+                </div>
+                <label>Consulta:</label>
+                <textarea name="mensaje" rows="4" id="mensaje" required></textarea>
+                <input type="button" class="btn-cotizar" value="Enviar Compra" id="enviarCompra_${producto.id}" onclick="enviarCompra('${producto.id}')">
+            </form>
+        </div>
+    `;
+    document.getElementById("modalForm").appendChild(modalForm);
+}
 
-                        // Restablecer las clases de animación para volver a reproducir la animación
-                        notification.classList.remove('animate__fadeIn');
-                        notification.classList.remove('animate__animated');
-                        void notification.offsetWidth; // Forzar un reflow para reiniciar las animaciones
+// Función para mostrar la notificación después de enviar el formulario
+function mostrarNotificacion(productoId) {
+    const notification = document.getElementById(`notification_${productoId}`);
+    const notificationText = document.getElementById(`notification-text_${productoId}`);
 
-                        // Agregar las clases de animación
-                        notification.classList.add('animate__fadeIn');
-                        notification.classList.add('animate__animated');
+    // Restablecer las clases de animación para volver a reproducir la animación
+    notification.classList.remove('animate__fadeIn');
+    notification.classList.remove('animate__animated');
+    void notification.offsetWidth; // Forzar un reflow para reiniciar las animaciones
 
-                        // Configurar el contenido de la notificación
-                        notification.style.display = 'block';
-                        notificationText.textContent = 'Enviado Correctamente ✔️ ';
+    // Agregar las clases de animación
+    notification.classList.add('animate__fadeIn');
+    notification.classList.add('animate__animated');
 
-                        // Ocultar la notificación después de 5 segundos
-                        setTimeout(() => {
-                            notification.style.display = 'none';
-                        }, 5000);
-                    }
+    // Configurar el contenido de la notificación
+    notification.style.display = 'block';
+    notificationText.textContent = 'Enviado Correctamente ✔️ ';
 
-                    // Asociar la función al evento click del nuevo botón
-                    document.getElementById(`enviarCompra_${producto.id}`).addEventListener('click', () => mostrarNotificacion(producto.id));
+    // Ocultar la notificación después de 5 segundos
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 5000);
+}
+
+// Iterar sobre la lista de productos
+productos.forEach((producto) => {
+    generarModal(producto);
+    generarModalForm(producto);
+
+    let formularioEnviado = false;  // Variable para rastrear si el formulario se ha enviado con éxito
+
+    const enviarCompraButton = document.getElementById(`enviarCompra_${producto.id}`);
+    if (enviarCompraButton) {
+        enviarCompraButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Evitar que el formulario se envíe
+
+            // ... (Validación del formulario)
+            
+// Validate form fields
+const nombre = document.getElementById("nombre").value;
+const email = document.getElementById("email").value;
+const telefono = document.getElementById("telefono").value;
+const mensaje = document.getElementById("mensaje").value;
+const cantidad = document.getElementById("cantidad").value;  // Include this line if "cantidad" is part of your form
+
+// Validate telefono using regex (9 digits)
+const isTelefonoValid = /^\d{9}$/.test(telefono);
+
+// Create an array to store missing fields
+const missingFields = [];
+
+// Check each field and add to the missingFields array if empty
+if (nombre.trim() === "") {
+    missingFields.push("Nombre");
+}
+if (email.trim() === "") {
+    missingFields.push("Correo Electrónico");
+}
+if (!isTelefonoValid) {
+    missingFields.push("Número telefónico (debe tener 9 dígitos)");
+}
+if (mensaje.trim() === "") {
+    missingFields.push("Consulta");
+}
+if (cantidad.trim() === "") {
+    missingFields.push("Cantidad");  // Include "Cantidad" in the condition if it's part of your form
+}
 
 
-                }
+            if (missingFields.length > 0) {
+                alert("Por favor, complete los siguientes campos:\n" + missingFields.join("\n"));
+            } else {
+                // Llamar a la función enviarButton solo si todos los campos están llenos
+                enviarButton(producto.id);
 
-                productos.forEach((producto) => {
-                    generarModal(producto);
-                    generarModalForm(producto);
+                // Llamar a la función mostrarNotificacion después de enviar el formulario con éxito
+                mostrarNotificacion(producto.id);
 
-                    const enviarCompraButton = document.getElementById(`enviarCompra_${producto.id}`);
-                    if (enviarCompraButton) {
-                        enviarCompraButton.addEventListener('click', function() {
-                            enviarButton(producto.id);
-                            // Cerrar el modal principal
-                            closeModalForm(producto.id);
-                        });
-                    }
-                });
+                // Cerrar el modal principal (Asumiendo que tienes una función closeModalForm implementada)
+                closeModalForm(producto.id);
+            }
+        });
+    }
+});
+
+
+
 
 
                 function getStarsHTML(stars) {
@@ -892,41 +940,75 @@ textarea {
         }
 
         function enviarButton(productoId) {
-            const modalForm = document.getElementById(`${productoId}_modalForm`);
-            if (!modalForm) {
-                console.log('No se encontró el modal');
-                return;
-            }
+    const modalForm = document.getElementById(`${productoId}_modalForm`);
+    if (!modalForm) {
+        console.log('No se encontró el modal');
+        return;
+    }
 
-            // Obtener valores del formulario
-            const nombre = modalForm.querySelector("#nombre").value;
-            const email = modalForm.querySelector("#email").value;
-            const mensaje = modalForm.querySelector("#mensaje").value;
-            const producto = modalForm.querySelector("#producto").value;
-            const cantidad = modalForm.querySelector("#cantidad").value;
-            const telefono = modalForm.querySelector("#telefono").value;
+    // Obtener valores del formulario
+    const nombre = modalForm.querySelector("#nombre").value;
+    const email = modalForm.querySelector("#email").value;
+    const mensaje = modalForm.querySelector("#mensaje").value;
+    const producto = modalForm.querySelector("#producto").value;
+    const cantidad = modalForm.querySelector("#cantidad").value;
+    const telefono = modalForm.querySelector("#telefono").value;
 
-            // Envía datos al servidor (PHP) usando AJAX
-            $.ajax({
-                url: "mensajewssp.php",
-                type: "POST",
-                data: {
-                    nombre: nombre,
-                    email: email,
-                    telefono: telefono,
-                    producto: producto,
-                    cantidad: cantidad,
-                    mensaje: mensaje
-                },
-                success: function(response) {
-                    console.log(response);
-                    // Muestra una alerta después de enviar el correo
-                    //alert("Correo enviado exitosamente");
+    // Validar los datos del formulario (puedes agregar más validaciones según tus necesidades)
+    if (!nombre || !email || !mensaje || !producto || !cantidad || !telefono) {
+        alert("Por favor, complete todos los campos del formulario.");
+        return;
+    }
 
-                    // Ocultar el modal del formulario con desvanecimiento
-                   
-                },
-            });
+    // Envía datos al primer archivo (mensajewssp.php) usando AJAX
+    $.ajax({
+        url: "mensajewssp.php",
+        type: "POST",
+        data: {
+            nombre: nombre,
+            email: email,
+            telefono: telefono,
+            producto: producto,
+            cantidad: cantidad,
+            mensaje: mensaje
+        },
+        success: function(response) {
+            console.log(response);
+
+            // Puedes realizar acciones adicionales después de enviar los datos al primer archivo
+            // ...
+
+            // Cierra el modal del formulario con desvanecimiento (Asumiendo que tienes una función closeModalForm implementada)
+            closeModalForm(productoId);
+        },
+        error: function(error) {
+            console.error("Error al enviar datos al primer archivo:", error);
         }
+    });
+
+    // Envía datos al segundo archivo (CotizacionController.php) usando otra solicitud AJAX
+    $.ajax({
+        url: "../controller/CotizacionController.php", // Ajusta la URL según tu estructura de archivos
+        type: "POST",
+        data: {
+            nombre: nombre,
+            email: email,
+            telefono: telefono,
+            producto: producto,
+            cantidad: cantidad,
+            mensaje: mensaje
+        },
+        success: function(response) {
+            console.log(response);
+
+            // Puedes realizar acciones adicionales después de enviar los datos al segundo archivo
+            // ...
+        },
+        error: function(error) {
+            console.error("Error al enviar datos al segundo archivo:", error);
+        }
+    });
+}
+
     </script>
 </body>

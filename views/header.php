@@ -12,6 +12,8 @@
                 <a href="productos.php">Productos</a>
                 <a href="contacto.php">Contactanos</a>
                 <a href="politica_envio.php">Politicas de envíos</a>
+                <a href="loguin.php">Admin</a>
+
             </div>
         </div> 
         <div class="nav-menu-btn"></div>  
