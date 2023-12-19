@@ -944,8 +944,8 @@ productos.forEach((producto) => {
         success: function(response) {
             console.log(response);
             // Cierra el modal del formulario con desvanecimiento (Asumiendo que tienes una función closeModalForm implementada)
+            mostrarNotificacion(productoId);
             closeModalForm(productoId);
-            mostrarNotificacion(producto.id);
         },
         error: function(error) {
             console.error("Error al enviar datos al primer archivo:", error);
