@@ -658,66 +658,16 @@ function mostrarNotificacion(productoId) {
 
 // Iterar sobre la lista de productos
 productos.forEach((producto) => {
-    generarModal(producto);
-    generarModalForm(producto);
+                    generarModal(producto);
+                    generarModalForm(producto);
 
-    let formularioEnviado = false;  // Variable para rastrear si el formulario se ha enviado con éxito
-
-    const enviarCompraButton = document.getElementById(`enviarCompra_${producto.id}`);
-    if (enviarCompraButton) {
-        enviarCompraButton.addEventListener('click', function (event) {
-            event.preventDefault(); // Evitar que el formulario se envíe
-
-            // ... (Validación del formulario)
-            
-// Validate form fields
-const nombre = document.getElementById("nombre").value;
-const email = document.getElementById("email").value;
-const telefono = document.getElementById("telefono").value;
-const mensaje = document.getElementById("mensaje").value;
-const cantidad = document.getElementById("cantidad").value;  // Include this line if "cantidad" is part of your form
-
-// Validate telefono using regex (9 digits)
-const isTelefonoValid = /^\d{9}$/.test(telefono);
-
-// Create an array to store missing fields
-const missingFields = [];
-
-// Check each field and add to the missingFields array if empty
-if (nombre.trim() === "") {
-    missingFields.push("Nombre");
-}
-if (email.trim() === "") {
-    missingFields.push("Correo Electrónico");
-}
-if (!isTelefonoValid) {
-    missingFields.push("Número telefónico (debe tener 9 dígitos)");
-}
-if (mensaje.trim() === "") {
-    missingFields.push("Consulta");
-}
-if (cantidad.trim() === "") {
-    missingFields.push("Cantidad");  // Include "Cantidad" in the condition if it's part of your form
-}
-
-
-            if (missingFields.length > 0) {
-                alert("Por favor, complete los siguientes campos:\n" + missingFields.join("\n"));
-            } else {
-                // Llamar a la función enviarButton solo si todos los campos están llenos
-                enviarButton(producto.id);
-
-                // Llamar a la función mostrarNotificacion después de enviar el formulario con éxito
-                mostrarNotificacion(producto.id);
-
-                // Cerrar el modal principal (Asumiendo que tienes una función closeModalForm implementada)
-                closeModalForm(producto.id);
+                    const enviarCompraButton = document.getElementById(`enviarCompra_${producto.id}`);
+                    if (enviarCompraButton) {
+                        enviarCompraButton.addEventListener('click', function() {
+                            enviarButton(producto.id);
+                        });
             }
-        });
-    }
 });
-
-
 
 
 
@@ -945,6 +895,7 @@ if (cantidad.trim() === "") {
         console.log('No se encontró el modal');
         return;
     }
+    
 
     // Obtener valores del formulario
     const nombre = modalForm.querySelector("#nombre").value;
@@ -954,9 +905,27 @@ if (cantidad.trim() === "") {
     const cantidad = modalForm.querySelector("#cantidad").value;
     const telefono = modalForm.querySelector("#telefono").value;
 
-    // Validar los datos del formulario (puedes agregar más validaciones según tus necesidades)
-    if (!nombre || !email || !mensaje || !producto || !cantidad || !telefono) {
-        alert("Por favor, complete todos los campos del formulario.");
+    let campos_faltantes = [];
+    // Validar los datos del formulario (si los campos estan vacios)
+    if (nombre.trim() === "") {
+        campos_faltantes.push("Nombre");
+    }
+    if (email.trim() === "") {
+        campos_faltantes.push("Email");
+    }
+    if (mensaje.trim() === "") {
+        campos_faltantes.push("Mensaje");
+    }
+    if (cantidad.trim() === "") {
+        campos_faltantes.push("Cantidad");
+    }
+    if (telefono.trim() === "" || telefono.length < 9) {
+        campos_faltantes.push("Telefono");
+    }
+
+    // Si hay campos faltantes, mostrar un mensaje de error
+    if (campos_faltantes.length > 0) {
+        alert("Por favor, complete los siguientes campos: " + campos_faltantes.join(", "));
         return;
     }
 
@@ -974,11 +943,8 @@ if (cantidad.trim() === "") {
         },
         success: function(response) {
             console.log(response);
-
-            // Puedes realizar acciones adicionales después de enviar los datos al primer archivo
-            // ...
-
             // Cierra el modal del formulario con desvanecimiento (Asumiendo que tienes una función closeModalForm implementada)
+            mostrarNotificacion(productoId);
             closeModalForm(productoId);
         },
         error: function(error) {
@@ -1000,9 +966,6 @@ if (cantidad.trim() === "") {
         },
         success: function(response) {
             console.log(response);
-
-            // Puedes realizar acciones adicionales después de enviar los datos al segundo archivo
-            // ...
         },
         error: function(error) {
             console.error("Error al enviar datos al segundo archivo:", error);

@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $consulta->fetch();
 
         // Verificar la contraseña cifrada
-        if (password_verify($password, $hashedPassword)) {
+        if ($password==$hashedPassword) {
             // Usuario autenticado correctamente
             $_SESSION["user_id"] = $id;
             $_SESSION["username"] = $username;
