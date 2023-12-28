@@ -8,18 +8,19 @@
   <link rel="stylesheet" type="text/css" href="../public/css/menu.css">
   <link rel="stylesheet" type="text/css" href="../public/css/contacto.css">
   <link rel="stylesheet" type="text/css" href="../public/css/footer.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
   <?php include_once "header.php";?>
   <main class="main__contacto">
     <div class="contacto__entrada">
-      <form class="contacto__formulario" action="../controllers/enviarcorreo.php" method="post">
-        <input class="contacto__item" type="text" placeholder="Nombre completo" name="nombre" />
-        <input class="contacto__item" type="email" placeholder="Email" name="email" required/>
-        <input class="contacto__item" type="number" placeholder="Teléfono (9 digitos)" name="telefono" />
-        <input class="contacto__item" type="text" placeholder="Asunto" name="asunto" />
-        <textarea class="contacto__item" name="mensaje" cols="30" rows="7" placeholder="Escribe tu mensaje aqui ..."></textarea>
-        <input class="contacto__item " type="submit" name="enviar" value="Enviar" />
+      <form class="contacto__formulario">
+      <input id="nombre" class="contacto__item" type="text" placeholder="Nombre completo" name="nombre" />
+      <input id="email" class="contacto__item" type="email" placeholder="Email" name="email" required/>
+      <input id="telefono" class="contacto__item" type="number" placeholder="Teléfono (9 digitos)" name="telefono" />
+      <input id="asunto" class="contacto__item" type="text" placeholder="Asunto" name="asunto" />
+      <textarea id="mensaje" class="contacto__item" name="mensaje" cols="30" rows="7" placeholder="Escribe tu mensaje aquí ..."></textarea>
+      <input class="contacto__item " type="submit" name="enviar" value="Enviar" onclick="enviardatos()" />
       </form>
       <div class="contacto__contenido">
         <h1 class="contacto__titulo">
@@ -45,3 +46,34 @@
   <script type="application/javascript" src="../public/js/main.js" async></script>
 </body>
 </html>
+<script>
+ function enviardatos(){
+   // Obtener valores del formulario
+   const nombre = document.getElementById("nombre").value;
+  const email = document.getElementById("email").value;
+  const telefono = document.getElementById("telefono").value;
+  const asunto = document.getElementById("asunto").value;
+  const mensaje = document.getElementById("mensaje").value;  
+  const cantidad = 1;
+
+  //enviar datos del formulario al archivo (CotizacionController.php) usando otra solicitud AJAX
+   $.ajax({
+        url: "../controller/CotizacionController.php", // Ajusta la URL según tu estructura de archivos
+        type: "POST",
+        data: {
+            nombre: nombre,
+            email: email,
+            telefono: telefono,
+            producto: asunto,
+            cantidad: cantidad,
+            mensaje: mensaje
+        },
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(error) {
+            console.error("Error al enviar datos al segundo archivo:", error);
+        }
+    });
+ }
+</script>
