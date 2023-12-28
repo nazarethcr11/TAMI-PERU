@@ -1,9 +1,15 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php'; 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+
 //obtener los datos del post
 $nombre = $_POST['nombre'];
 $telefono = $_POST['telefono'];
 $mensaje = $_POST['mensaje'];
 $producto = $_POST['producto'];
+$email = $_POST['email'];
 //procesar numero
 $telefono = str_replace(" ", "", $telefono);
 //agregarle el +51 al inicio
@@ -51,6 +57,46 @@ switch ($producto) {
         break;
 }
 
+/*
+$imgPath = 'temp_image.webp'; // Nombre del archivo temporal
+file_put_contents($imgPath, file_get_contents($linkimagen));
+
+
+// Configuración de PHPMailer
+$mail = new PHPMailer(true);
+try {
+    // Configuración del servidor SMTP
+    //informestami01@gmail.com
+    $mail->isSMTP();
+    $mail->Host       = 'gestion.contigo-voy.com'; // Cambia esto con la dirección de tu servidor SMTP
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'gestioncontigovoy@gestion.contigo-voy.com';   // Cambia esto con tu correo SMTP
+    $mail->Password   = '}qlC%A.frc3?'; // Cambia esto con tu contraseña SMTP
+    $mail->SMTPSecure = 'ssl';  // Puedes usar 'ssl' o 'tls'
+    $mail->Port       = 465;    // Puerto SMTP
+
+    // Configuración del remitente y destinatario
+    $mail->setFrom('tamiperu@tami-peru.com', 'Tami Perú');
+    $mail->addAddress($email, $nombre);
+
+    // Configuración del contenido del correo
+    $mail->isHTML(true);
+    $mail->Subject = 'Información del producto: ' . $producto;
+    $mail->Body    = $mensajealusuario . '<br><img src="' . $linkimagen . '" alt="' . $producto . '">';
+    $mail->AltBody = $mensajealusuario; // Texto sin formato HTML
+
+    // Adjuntar la imagen al correo
+    $mail->addAttachment($imgPath, 'flyer.jpg');
+
+    // Enviar el correo
+    $mail->send();
+
+    echo 'Correo enviado correctamente.';
+} catch (Exception $e) {
+    echo "Error al enviar el correo: {$mail->ErrorInfo}";
+}
+*/
+
 //enviar el mensaje
 
 $params=array(
@@ -86,4 +132,7 @@ $params=array(
     } else {
       echo $response;
     }
+//enviar por correo
+
+
 ?>

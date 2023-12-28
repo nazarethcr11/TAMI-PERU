@@ -1,0 +1,235 @@
+.p_individual {
+    background-color: white;
+    padding: 6rem 20px 1rem 20px;
+  }
+  .productos__titulo {
+    text-align: center;
+    color: var(--color-botones);
+    margin: 2.3rem;
+    font-size: var(--fontsize-titulo);
+  }
+  .modal-content {
+    background-color: white;
+    padding: 1rem 20px;
+  }
+  .pro_titulo {
+    text-transform: uppercase;
+    line-height: 95%;
+    color: var(--color-secundario2);
+    font-weight: 700;
+    font-size: 1.8rem;
+    font-family: "Montserrat", sans-serif;
+    text-align: start;
+    border-bottom: 1.5px solid var(--color-secundario2);
+    padding-bottom: 0.5rem;
+  }
+  .product-info {
+    text-align: justify;
+    flex-grow: 1;
+    padding: 0 20px; 
+  }
+  .product-details {
+    display: flex; 
+    align-items: start; 
+    justify-content: center;
+  }
+  .modal-content .product-images{
+    width: 52%;
+    min-width: 52%;
+    max-width: 52%;
+    height: auto;
+    border-radius: 6px;
+  }
+  .principal-img{
+    width: 100%;
+    max-height: 27rem;
+    min-height: 27rem;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .product-thumbnails{
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+  }
+  .product-thumbnails img{
+    width: 110px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-right: 0.8rem;
+    cursor: pointer;
+  }
+  .product-thumbnails video{
+    width: 110px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-right: 0.8rem;
+    cursor: pointer;
+  }
+  .product-thumbnails img.selected{
+    border: 2px solid var(--color-secundario2);  
+  }
+  /*ultimo thumnail sin margenes*/
+  .product-thumbnails img:last-child{
+    margin: 0;
+  }
+  /* Estilo para el precio */
+  .modal-content p {
+    font-size: 18px;
+    color: #333;
+    margin-top: 15px;
+  }
+  .image-container {
+    position: relative;
+  }
+  /* Estilo para animar la apertura del modal */
+  .modal.fade-in {
+    animation: fadeIn 0.3s ease;
+  }
+  /* Estilo para animar el cierre del modal */
+  .modal.fade-out {
+    animation: fadeOut 0.3s ease;
+  }
+  .btn-contactar{
+    margin: 0.2rem auto;
+    padding: 0.3rem 1rem;
+    background-color: var(--color-secundario2);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  .btn-faq{
+    margin: 0.2rem auto;
+    padding: 0.3rem 1rem;
+    background-color: transparent;
+    color: var(--color-secundario2);
+    border: 1.5px solid var(--color-secundario2);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  .calc-container{
+    border-top:1.5px solid var(--color-secundario2);
+  }
+  .counter {
+    margin: 1rem 2.5rem 0.7rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .counter-cell {
+    height: 25px;
+    flex: 1;
+    text-align: center;
+    border: 1px solid var(--color-secundario2);
+    color: var(--color-secundario2);
+  }
+  .btn-counter {
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--color-secundario2);
+  }
+  #count {
+    font-size: 15px;
+    align-self: center;
+  }
+  .btn-cotizar{
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-secundario2);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  .pro-opinion {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    color:var(--color-secundario2);
+  }
+  .star {
+    font-size: 20px; /* Ajusta el tama�0�9o de las estrellas seg��n tus preferencias */
+  }
+  .opinion-subcont{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+  }
+  .opinion-subcont label{
+    margin-right: 10px;
+    font-size: 1.1rem;
+  }
+  .custom-table {
+    margin-top: 0.5rem;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .custom-table, .custom-table tr, .custom-table td {
+    border: 1px solid var(--color-secundario2);
+    font-size: 0.8rem;
+  }
+  .custom-table tr:nth-child(1) {
+    background-color: var(--color-secundario2);
+    border: 1px solid white;
+    color: white;
+  }
+  .custom-table tr:nth-child(2) {
+    color: var(--color-secundario2);
+  }
+  .custom-table td {
+    padding: 2px;
+    text-align: center;
+  }
+  .detalles{
+    margin: 0.5rem 0rem 0 0rem;
+  }
+  .detalles-subcont{
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+  .detalles-subcont label{
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .detalles-subcont span{
+    font-size: 1rem;
+    line-height: 1rem;
+    display: flex;
+  }
+  .detalles-extra{
+    margin: 0.5rem 0rem 0rem 2rem;
+  }
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--color-secundario2);
+    transition: 0.3s ease;
+    border-radius: 50%;
+    background-color: white;
+    padding: 0px 8.5px 5px 8.5px;
+    box-shadow: 0px 4px 8px rgba(0, 107, 121, 0.5);
+  }

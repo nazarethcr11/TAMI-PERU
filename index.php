@@ -15,14 +15,17 @@
         <p class="sub-titulo">“Tecnología e Innovación para TI”</p>
     </div>
 
-<script>
-    // Función para redirigir a otra página después de 5 segundos
-    function redireccionar() {
-      window.location.href = 'views/inicio.php'; // Esto me redirige a la página que quiero mostrar
-    }
+    <script>
+        // Función para redirigir a otra página después de 5 segundos
+        function redireccionar() {
+            // Cambia la URL sin recargar la página
+            history.replaceState(null, null, 'inicio.php');
+            // Redirige a la nueva vista
+            window.location.href = 'views/inicio.php';
+        }
 
-    // Llama a la función de redirección después de 5 segundos (5000 milisegundos)
-    setTimeout(redireccionar, 3000);
-  </script>
+        // Llama a la función de redirección después de 5 segundos (5000 milisegundos)
+        setTimeout(redireccionar, 3000);
+    </script>
 </body>
 </html>

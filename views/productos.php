@@ -531,9 +531,9 @@ textarea {
                                             <div class="detalles-subcont">
                                                 <label>Mayor Información: </label>
                                                 <br>
-                                                    <a href="https://smartlink.metricool.com/public/smartlink/tamiperu01" class="btn-contactar">Contactar</a>
+                                                    <a href="contacto.php" class="btn-contactar">Contactar</a>
                                                     <button class="btn-faq" onclick="openFAQModal()">FAQ</button>                                            
-                                                    <button id="submitButton_${producto.id}" class="button">FINALIZAR</button>
+                                                    <button id="submitButton_${producto.id}" class="button" style="display: none;">FINALIZAR</button>
                                             </div>
                                         </div>
                                         <div class="calc-container">
