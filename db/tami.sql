@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2023 a las 15:34:09
+-- Tiempo de generación: 26-12-2023 a las 21:16:38
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -35,8 +35,17 @@ CREATE TABLE `cotizaciones` (
   `producto` varchar(255) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `mensaje` text NOT NULL,
+  `estado` varchar(20) DEFAULT 'consulta',
   `fecha_cotizacion` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `cotizaciones`
+--
+
+INSERT INTO `cotizaciones` (`id`, `nombre`, `email`, `telefono`, `producto`, `cantidad`, `mensaje`, `estado`, `fecha_cotizacion`) VALUES
+(9, 'angel', 'angel@gmail.com', '923123321', 'Sellador de Botellas', 12, 'consulta', 'consulta', '2023-12-26 19:19:13'),
+(10, 'daniel', 'daniel@gmail.com', '923123321', 'Sellador de Botellas', 12, 'consulta', 'consulta', '2023-12-26 19:19:25');
 
 -- --------------------------------------------------------
 
@@ -51,6 +60,13 @@ CREATE TABLE `usuarios` (
   `password` varchar(255) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `username`, `email`, `password`, `fecha_registro`) VALUES
+(1, 'daniel', 'daniel@gmail.com', '123', '2023-12-26 16:26:08');
 
 --
 -- Índices para tablas volcadas
@@ -76,13 +92,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `cotizaciones`
 --
 ALTER TABLE `cotizaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

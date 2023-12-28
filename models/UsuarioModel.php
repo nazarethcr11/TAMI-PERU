@@ -11,9 +11,8 @@ class UsuarioModel {
     }
 
     public function insertUsuario($username, $email, $password) {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        $sql = "INSERT INTO usuarios (username, email, password) VALUES ('$username', '$email', '$hashedPassword')";
+        // No se codifica la contraseña
+        $sql = "INSERT INTO usuarios (username, email, password) VALUES ('$username', '$email', '$password')";
 
         if ($this->conn->query($sql) === TRUE) {
             return "Usuario registrado con éxito.";
