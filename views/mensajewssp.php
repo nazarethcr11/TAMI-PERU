@@ -100,14 +100,14 @@ try {
 //enviar el mensaje
 
 $params=array(
-    'token' => 'xi88070gbr4hef1b',
+    'token' => 'b4nfkrt6qv0xrrpx',
     'to' => $telefono,
     'image' => $linkimagen,
     'caption' => $mensajealusuario,
     );
     $curl = curl_init();
     curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://api.ultramsg.com/instance67334/messages/image",
+      CURLOPT_URL => "https://api.ultramsg.com/instance72853/messages/image",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
